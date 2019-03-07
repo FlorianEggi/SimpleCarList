@@ -1,6 +1,7 @@
 package com.example.feggetsberger16.simplecarlist;
 
 import android.content.Context;
+import android.view.KeyboardShortcutGroup;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,30 +19,16 @@ import java.util.List;
  * Created by feggetsberger16 on 07.03.2019.
  */
 
-public class ListViewAdapter extends BaseAdapter{
+public class ListViewAdapter extends ArrayAdapter<Car>{
     private List<Car> cars = new ArrayList<>();
     private int layoutId;
     private LayoutInflater inflater;
 
     public ListViewAdapter(Context ctx, int layoutId, List<Car> cars) {
+        super(ctx,layoutId,cars);
         this.cars = cars;
         this.layoutId = layoutId;
         this.inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
-
-    @Override
-    public int getCount() {
-        return cars.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return cars.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
     }
 
     @Override
@@ -49,9 +36,9 @@ public class ListViewAdapter extends BaseAdapter{
         Car car = cars.get(position);
         View listItem = (convertView == null)?inflater.inflate(this.layoutId,null):convertView;
         ((TextView) listItem.findViewById(R.id.textView1)).setText(car.getFirst_name());
-        ((TextView) listItem.findViewById(R.id.textView1)).setText(car.getLast_name());
-        ((TextView) listItem.findViewById(R.id.textView1)).setText(car.getMake());
-        ((TextView) listItem.findViewById(R.id.textView1)).setText(car.getModel());
+        ((TextView) listItem.findViewById(R.id.textView2)).setText(car.getLast_name());
+        ((TextView) listItem.findViewById(R.id.textView3)).setText(car.getMake());
+        ((TextView) listItem.findViewById(R.id.textView4)).setText(car.getModel());
         return listItem;
     }
 }
