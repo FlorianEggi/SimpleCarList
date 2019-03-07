@@ -31,29 +31,23 @@ public class MainActivity extends AppCompatActivity {
     {
         int lineCounter = 0;
         try {
-            FileInputStream fis = openFileInput("cars.csv");
-            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+            BufferedReader bin = new BufferedReader(new InputStreamReader(getAssets().open("cars.csv")));
             while(true)
             {
-                if(lineCounter == 0)
-                {
-                    lineCounter++;
-                    //do nothing
-                }
-                else
-                {
-                    String line = in.readLine();
+
+                    String line = bin.readLine();
                     if(line==null){
                         break;
                     }
-                    String[] arr = line.split(",");
-                    String first_name = arr[1];
-                    String last_name = arr[2];
-                    String brand = arr[11];
-                    String model = arr[12];
-                    cars.add(new Car(first_name,last_name,brand,model));
-                    lineCounter++;
-                }
+                    if(!line.contains("id")) {
+                        String[] arr = line.split(",");
+                        String first_name = arr[1];
+                        String last_name = arr[2];
+                        String brand = arr[11];
+                        String model = arr[12];
+                        cars.add(new Car(first_name, last_name, brand, model));
+                        lineCounter++;
+                    }
 
             }
 
