@@ -10,7 +10,7 @@
         android:id="@+id/addButton"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:layout_marginStart="328dp"
+        android:layout_marginStart="304dp"
         android:layout_marginTop="508dp"
         android:clickable="true"
         app:backgroundTint="@color/colorAccent"
@@ -31,7 +31,10 @@
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1">
+
+            </SearchView>
+
         </TableRow>
 
         <TableRow
@@ -40,10 +43,18 @@
 
             <Spinner
                 android:id="@+id/spinner"
-                android:layout_width="match_parent"
+                android:layout_width="303dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:minHeight="50dp" />
+
+            <Button
+                android:id="@+id/buttonFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Filter" />
+
         </TableRow>
 
         <TableRow
